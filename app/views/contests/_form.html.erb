@@ -1,0 +1,41 @@
+<%= form_for(@contest) do |f| %>
+  <% if @contest.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@contest.errors.count, "error") %> prohibited this contest from being saved:</h2>
+
+      <ul>
+      <% @contest.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :period %><br>
+    <%= f.date_select :period %>
+  </div>
+  <div class="field">
+    <%= f.label :introduce %><br>
+    <%= f.text_area :introduce %>
+  </div>
+  <div class="field">
+    <%= f.label :category %><br>
+    <%= f.select :category, [['리포트', 0],['문학', 1],['아이디어', 2],['만화, 캐릭터', 3],['작명, 슬로건', 4],['게임, 소프트웨어', 5],['광고, 마케팅', 6],['UCC', 7]] %>
+  </div>
+  <div class="field">
+    <%= f.label :image %><br>
+    <%= f.file_field :image %>
+  </div>
+  <div class="field">
+    <%= f.label :tag_list %><br>
+    <%= f.text_field :tag_list, placeholder: '하나 이상의 태그는 콤마(,)로 구분하여 입력하세요.' %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

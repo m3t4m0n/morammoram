@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+  <title>모람모람</title>
+  
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!-- Required meta tags - end -->
+  
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+  <!-- Bootstrap - end -->
+  
+ 
+  
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+
+</head>
+<body>
+  <nav class="navbar navbar-toggleable-md navbar-light">
+  <button class="navbar-toggler navbar-toggler-right " type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <a class="navbar-brand" href="<%=root_path%>"><%= image_tag "logo.png", class: "nav-logo" %></a>
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <ul class="nav navbar-nav ml-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="<%=root_path%>">홈 <span class="sr-only">(current)</span></a>
+      </li>
+      <!---->
+      <% if user_signed_in?%>
+        <a class='nav-link' href="<%=destroy_user_session_path%>" data-method="delete">로그아웃</a>
+      <% else %>
+        <a class='nav-link' href="<%=new_user_session_path%>">로그인</a>
+      <% end %>
+      <!---->
+      <% if user_signed_in? %> 
+        <% if current_user.isadmin == 2%>
+          <li class="nav-item pull-xs-right ">
+            <a class="nav-link" href="<%=manager_index_path%>">관리자페이지</a></a>
+          </li>
+        <% else %>
+          <li class="nav-item">
+            <a class="nav-link" href="<%=manager_index_path%>"><%=current_user.email%></a></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="<%=manager_index_path%>">개인페이지</a></a>
+          </li>
+          
+        <% end %>
+      <% end %>
+      
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <i class="fa fa-bell" aria-hidden="true"></i>
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" href="#">Action</a>
+          <a class="dropdown-item" href="#">Another action</a>
+          <a class="dropdown-item" href="#">Something else here</a>
+        </div>
+      </li>
+    </ul>
+  </div>
+</nav>
+  
+<%= yield %>
+
+
+ 
+
+<!-- footer, whole-->
+
+  <div class="footer-wrapper">
+  <footer class="bd-footer morammoram">
+    <div class="container2 p-5">
+      <p>Developed by <span class="lion">멋쟁이사자처럼<br> with 양효영, 이동건, 장서정, 장순호, 최성흠</span></p>
+      <ul class="footer_link">
+          <li>
+              <a class="link_ll" href="http://ajou.likelion.org" target="_blank">
+              <i class="fa fa-home" aria-hidden="true"></i>
+              ajou.likelion.org
+              </a>
+          </li>
+          <li>
+              <a class="link_ll" href="https://www.facebook.com/aulikelion" target="_blank">
+              <i class="fa fa-facebook-square" aria-hidden="true"></i>
+              www.facebook.com/aulikelion
+              </a>
+          </li>
+      </ul>
+    </div>
+   </footer>
+    
+    <footer class="py-3 bg-inverse">
+      <div class="container2">
+        <p class="m-0 text-center text-white"><i class="fa fa-code" aria-hidden="true" id=icon></i>Copyright &copy; LikeLion 5th</p>
+      </div>
+    </footer>
+</div>
+<!-- footer, whole -  end-->
+
+
+  <!-- Bootstrap -->
+  <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+  <!-- Bootstrap - end -->
+  
+  <script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.js"></script>
+  
+
+
+</body>
+</html>

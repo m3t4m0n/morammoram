@@ -1,0 +1,47 @@
+<div class="search_box">
+  <div class="position">
+ <%= search_form_for @search do |f| %>
+   <!--검색기능...-->
+   <%= f.search_field :title_or_introduce_cont, class: "searchbeauty", placeholder: '제목 or 내용' %>
+   <% end %>
+ </div>
+ 
+ 
+  
+<div id="filters" class="button-group">  
+  <button type="button" class="btn btn-link btn-sm is-checked hvr-sweep-to-top" data-filter="*">전체보기</button>
+  <button type="button" class="btn btn-link btn-sm hvr-sweep-to-top" data-filter=".0">리포트</button>
+  <button type="button" class="btn btn-link btn-sm hvr-sweep-to-top" data-filter=".1">문학</button>
+  <button type="button" class="btn btn-link btn-sm hvr-sweep-to-top" data-filter=".2">아이디어</button>
+  <button type="button" class="btn btn-link btn-sm hvr-sweep-to-top" data-filter=".3">만화, 캐릭터</button>
+  <button type="button" class="btn btn-link btn-sm hvr-sweep-to-top" data-filter=".4">작명, 슬로건</button>
+  <button type="button" class="btn btn-link btn-sm hvr-sweep-to-top" data-filter=".5">게임, 소프트웨어</button>
+  <button type="button" class="btn btn-link btn-sm hvr-sweep-to-top" data-filter=".6">광고, 마케팅</button>
+  <button type="button" class="btn btn-link btn-sm hvr-sweep-to-top" data-filter=".7">UCC</button>
+</div>
+
+ 
+</div>
+
+
+
+<div class="container mainpage">
+  
+ 
+<div class="grid">
+  <% @contests.each do |contest| %>
+    <div class="element-item transition metal hvr-grow <%= contest.category.to_s %>" data-category="transition" onclick='location.href="<%= contest_path(contest) %>"'>
+      <p class="poster_container"><%= image_tag contest.image.url, class: "poster_img"%></p>
+      <div class="word_table">
+        <p class="name"><%= contest.title %></p>
+        <p class ="number"><%= contest.period.to_s %></p>
+        <p class="taglist"><%= tag_icons contest.tag_list %></p>
+        
+      </div>
+     </div>
+  <% end %>
+</div>
+  <a class="coloing btn btn-link btn-sm hvr-sweep-to-top" role="button" style="width: 100px; text-align: center;  
+     border-width: 2px;  padding: 3px 0px!important; margin-left: 15px;" <a="" href="/contests">전체 목록</a>
+
+</div>

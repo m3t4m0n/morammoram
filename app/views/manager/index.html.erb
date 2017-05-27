@@ -1,0 +1,28 @@
+<% if current_user.isadmin == 2 %>
+    <h1>관리자 페이지입니다.</h1>
+    <% if !@contests.nil?%>
+        <% @contests.each do |contest| %>
+            <p><%= contest.title%></p>
+            <%= link_to '수정', edit_contest_path(contest.id)%>
+            <%= link_to '삭제', contest_path(contest.id), method: :delete, data: { confirm: '삭제하시겠습니까?' } %>
+        <% end %>
+    <% else %>
+        <h1>입력된 공모전이 없습니다.</h1>
+    <% end %>
+    <%=link_to '새로운 공모전', new_contest_path%>
+<% else %>
+    <h1>개인패이지입니다.</h1>
+    <% if @teams.nil?  %>
+        <h2> 팀잠인 팀은 없습니다.</h2>
+    <% else %>
+        <% @teams.each do |team|%>
+            <% team.each do |teammate|%>
+                <a>teammate.email</a>
+            <% end %>
+            <br >
+        <% end %>
+    <% end %>
+    
+    <h2>소속 팀</h2>
+<% end %>
+

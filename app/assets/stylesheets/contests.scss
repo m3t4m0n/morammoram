@@ -1,0 +1,18 @@
+// Place all the styles related to the Contests controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+a.tag {
+  border:1px solid #eaeaea;
+  border-radius:3px;
+  background-color: #f4f4f4;
+  padding:.1em .2em;
+  &:hover {
+    text-decoration: none;
+    color: white;
+    background-color: #265484;
+    border:1px solid #265484;
+  }
+}
+.upload_img img {
+    width :50px;
+}
