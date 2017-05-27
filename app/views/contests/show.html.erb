@@ -42,10 +42,8 @@
           <% @team_list.each do |team| %>
             <div class="list_no" style="cursor:pointer"><B><%=team.title%></B> </div>
             <div class="list_member">
-              <% team.users.each do |t|%>
-                <p><%= t.email%></p>
+                <p><%= User.find(team.user_id).email %></p>
                 <a href=''></a>
-              <% end %>
             </div>
             <br>
           <% end %>

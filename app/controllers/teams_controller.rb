@@ -28,7 +28,7 @@ class TeamsController < ApplicationController
     
     respond_to do |format|
       if @team.save
-        format.html { redirect_to @team, notice: 'Team was successfully created.' }
+        format.html { redirect_to contest_path(@team.contest_id), notice: 'Team was successfully created.' }
         format.json { render :show, status: :created, location: @team }
       else
         format.html { render :new }
@@ -69,6 +69,6 @@ class TeamsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def team_params
-      params.require(:team).permit(:title, :grade, :contest_id)
+      params.require(:team).permit(:title, :grade, :contest_id, :user_id)
     end
 end
