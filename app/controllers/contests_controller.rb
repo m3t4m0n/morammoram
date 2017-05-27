@@ -1,6 +1,5 @@
 class ContestsController < ApplicationController
   before_action :set_contest, only: [:show, :edit, :update, :destroy]
-
   # GET /contests
   # GET /contests.json
   def index
